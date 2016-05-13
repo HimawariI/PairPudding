@@ -10,18 +10,24 @@ import translate.IntToEng;
 public class translateEngTest {
 
 	@Test
-	public void test() {
+	public void Undertest() {
 		IntToEng ite = new IntToEng();
-		String[] expected = {"zero","one", "ten","nineteen","thirty", "eighty-five", "ninety-nine","hundred"};
+		String[] expected = {"zero","hundred"};
+		//String[] actual = ite.translateEng();
+		assertThat(ite.Under100(0), is(expected[0]));
+		assertThat(ite.Under100(100), is(expected[1]));
+		
+	}
+	
+	@Test
+	public void Translatetest() {
+		IntToEng ite = new IntToEng();
+		String[] expected = {"zero","hundred","one-hundred-one"};
 		//String[] actual = ite.translateEng();
 		assertThat(ite.translateEng(0), is(expected[0]));
-		assertThat(ite.translateEng(1), is(expected[1]));
-		assertThat(ite.translateEng(10), is(expected[2]));
-		assertThat(ite.translateEng(19), is(expected[3]));
-		assertThat(ite.translateEng(30), is(expected[4]));
-		assertThat(ite.translateEng(85), is(expected[5]));
-		assertThat(ite.translateEng(99), is(expected[6]));
-		assertThat(ite.translateEng(100), is(expected[7]));
+		assertThat(ite.translateEng(100), is(expected[1]));
+		assertThat(ite.translateEng(101),is(expected[2]));
+		
 	}
 
 }
