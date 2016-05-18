@@ -49,8 +49,10 @@ public class IntToEng {
 	public static String translateEng(int n) {
 		if (n <= 100) {
 			return Under100(n);
-		} else {
-			return Over100(n);
+		} else if(100<= n && n <=1000){
+			return hundreds(n);
+		}else{ 
+			return thousands(n);
 		}
 	}
 
@@ -67,12 +69,22 @@ public class IntToEng {
 		}
 		return NUMBERS[n];
 	}
-	//100より大きい数値を英訳するメソッド
-	public static String Over100(int n) {
+	//100番台の数値を英訳するメソッド
+	public static String hundreds(int n) {
 		if(n%100 ==0){
 			return NUMBERS[n / 100] + "-hundred";
-		}	
+		}else if(n%1000 == 0){
+			return "thousand";
+		}
 		return NUMBERS[n/100]+"-hundred-"+ Under100(n%100);
+	}
+	public static String thousands(int n) {
+		if(n%1000 ==0){
+			return NUMBERS[n / 1000] + "-thousand";
+		}	else if(n%1000 <100){
+			return NUMBERS[n/1000] + "-thousand-"+Under100(n%1000);
+		}
+		return NUMBERS[n/1000]+"-thousand-"+ hundreds(n%1000);
 	}
 
 }

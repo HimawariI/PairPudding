@@ -23,13 +23,25 @@ public class translateEngTest {
 	}
 	
 	@Test
-	public void  Overtest() {
+	public void  hundredsTest() {
 		IntToEng ite = new IntToEng();
 		String[] expected = {"one-hundred-one","two-hundred","nine-hundred-ninety-nine"};
 		//String[] actual = ite.translateEng();
-		assertThat(ite.Over100(101), is(expected[0]));
-		assertThat(ite.Over100(200), is(expected[1]));
-		assertThat(ite.Over100(999), is(expected[2]));
+		assertThat(ite.hundreds(101), is(expected[0]));
+		assertThat(ite.hundreds(200), is(expected[1]));
+		assertThat(ite.hundreds(999), is(expected[2]));
+	}
+	
+	@Test
+	public void thousandsTest(){
+		IntToEng ite = new IntToEng();
+		String [] expected = { "one-thousand","one-thousand-one","three-thousand-one-hundred","nine-thousand-nine-hundred-ninety-nine","ten-thousand","nineteen-thousand-nine-hundred-ninety-nine"};
+		assertThat(ite.thousands(1000),is(expected[0]));
+		assertThat(ite.thousands(1001),is(expected[1]));
+		assertThat(ite.thousands(3100),is(expected[2]));
+		assertThat(ite.thousands(9999),is(expected[3]));
+		assertThat(ite.thousands(10000),is(expected[4]));
+		assertThat(ite.thousands(19999),is(expected[5]));
 	}
 	
 	@Test
